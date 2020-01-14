@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\d31ca7be-0497-4370-801f-97a29dc3b584" />
+    <None Remove="Icons\Pause.png" />
+    <None Remove="Icons\Play.png" />
+    <None Remove="Icons\PomodoreIcon" />
+    <None Remove="Icons\Stop.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\Pause.png" />
+    <Resource Include="Icons\Play.png" />
+    <Resource Include="Icons\PomodoreIcon" />
+    <Resource Include="Icons\Stop.png" />
+  </ItemGroup>
+
+</Project>

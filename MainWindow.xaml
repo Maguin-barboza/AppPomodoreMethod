@@ -1,0 +1,33 @@
+﻿<Window x:Class="AppPomodoreMethod.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppPomodoreMethod"
+        mc:Ignorable="d"
+        Title="Pomodore Method" Height="301" Width="330" Icon="Icons\PomodoreIcon"
+        ResizeMode="NoResize">
+    <Canvas Margin="0,0,0,3">
+
+        <Label FontSize="60" Content="00:00" Height="89" Width="150" Canvas.Left="90" Canvas.Top="62" />
+
+        <!-- Botão Play-->
+        <Button x:Name="BtnPlay" Canvas.Left="95" Canvas.Top="150" Height="38" Width="44" Click="BtnPlay_Click" >
+            <Image Source="Icons\Play.png"></Image>
+        </Button>
+
+        <!-- Botão Pause-->
+        <Button x:Name="BtnPause" 
+                Canvas.Left="145" Canvas.Top="150" Height="38" Width="44" 
+                IsEnabled="False" Click="BtnPause_Click" >
+            <Image Source="Icons\Pause.png"></Image>
+        </Button>
+
+        <!-- Botão Stop-->
+        <Button x:Name="BtnStop" 
+                Canvas.Left="195" Canvas.Top="150" Height="38" Width="44" 
+                IsEnabled="False" Click="BtnStop_Click" >
+            <Image Source="Icons\Stop.png"></Image>
+        </Button>
+    </Canvas>
+</Window>

@@ -1,0 +1,40 @@
+AppPomodoreMethod.txt
+
+
+*** Aplicativo para técnica Pomodoro ***
+Consiste em um timer e 3 botões (play, pause e stop);
+Botão Play: Inicia a contagem;
+Botão Pause: Paralisa a contagem;
+Botão Stop: Para a contagem para reiniciá-la.
+
+Aplicativo deve ficar na systray depois de aberto;
+Quando usuário abrir, o timer estará em 25:00 minutos, botão play habilitado e botões pause e stop desabilitados;
+Quando usuário clicar em play, o aplicativo deve iniciar a contagem regressiva até 00:00;
+Se usuário clicar em pause, o aplicativo deve pausar a contagem até que o usuário aperte play novamente e a contagem recomeça a partir do tempo em que foi pausado;
+Se usuário clicar em stop, o aplicativo irá reiniciar o display para 25:00 até o usuário clicar em play novamente;
+
+*** Tempo de descanso ***
+
+Quando terminar os 25:00, o sistema iniciará o tempo de descanso, que dura 5:00 minutos e não pode ser pausado e/ou parado;
+Contagem regressiva só iniciará quando usuário clicar em Play;
+Quando termminar o tempo de descanso (ou seja, passados os 5:00 minutos), o aplicativo deve:
+	* Avisar o usuário que o tempo de descanso terminou;
+	* Mudar o timer para 25:00 minutos;
+	* Aguardar o usuário apertar play para a próxima tarefa;
+
+Ao terminar 4 ciclos de tarefa e descanso, tempo de descanso deverá mudar para 15:00 minutos.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+[x] Definir Layout;
+	[x] Imagens nos botões ao invés de texto;
+
+[] Botão Play
+	-- definir
+[] Botão Pause
+	-- definir
+[] Botão Stop
+	-- definir
+[] Pulicar no GitHub
