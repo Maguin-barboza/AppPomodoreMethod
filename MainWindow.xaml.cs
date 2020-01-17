@@ -25,6 +25,7 @@ namespace AppPomodoreMethod
 
         private int Timer;
         private CancellationTokenSource tokenstop;
+        private bool IsPaused;
 
         public MainWindow()
         {
@@ -38,51 +39,18 @@ namespace AppPomodoreMethod
             BtnPause.IsEnabled = true;
             BtnStop.IsEnabled = true;
 
-            BackgroundWorker back = new BackgroundWorker();
-            back.WorkerReportsProgress = true;
-            back.DoWork += ContagemTimer;
-            //back.ProgressChanged +=;
-
-            //ContagemTimer();
+            ContagemTimer();
             LblTimer.Content = Timer.ToString("00:00");
         }
 
-        
 
-        private void ContagemTimer(object sender, DoWorkEventArgs e)
-        {
-            //Reiniciando o TokenStop;
-            //Se não destruir o objeto para criá-lo novamente, IsCancellationRequested será sempre true;
-            tokenstop = new CancellationTokenSource();
-
-            for (int i = Timer; i > 0; i--)
-            {
-                //Verificando se foi solicitado o cancelamento;
-                if (tokenstop.IsCancellationRequested)
-                    break;
-
-                Timer = i;
-
-
-
-                //Descobrir como eu posso enviar mensagens para a thread principal, atualizando a UI 
-                //conforme o processamento é realizado;
-                //LblTimer.Content = i.ToString("00:00");
-                Thread.Sleep(1000);
-            }
-        }
-        
-        private void ChangeContentLblTimer(object sender, ProgressChangedEventArgs e)
-        {
-            LblTimer.Content = e.UserState;
-        }
-
-        /*
         private async Task ContagemTimer()
         {
             //Reiniciando o TokenStop;
             //Se não destruir o objeto para criá-lo novamente, IsCancellationRequested será sempre true;
             tokenstop = new CancellationTokenSource();
+            
+            IsPaused = false;
 
             await Task.Run(() =>
             {
@@ -94,7 +62,7 @@ namespace AppPomodoreMethod
 
                     Timer = i;
 
-                    
+
 
                     //Descobrir como eu posso enviar mensagens para a thread principal, atualizando a UI 
                     //conforme o processamento é realizado;
@@ -102,7 +70,7 @@ namespace AppPomodoreMethod
                     Thread.Sleep(1000);
                 }
             });
-        }*/
+        }
 
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
@@ -111,7 +79,7 @@ namespace AppPomodoreMethod
             BtnPlay.IsEnabled = true;
 
             tokenstop.Cancel();
-
+            IsPaused = true;
             LblTimer.Content = Timer.ToString("00:00");
 
             tokenstop.Dispose();
@@ -124,7 +92,8 @@ namespace AppPomodoreMethod
             BtnPlay.IsEnabled = true;
 
             //Enviando solicitação de cancelamento para tarefa;
-            tokenstop.Cancel();
+            if(!IsPaused)
+                tokenstop.Cancel();
 
             LblTimer.Content = Timer.ToString("00:00");
             Timer = 25;
