@@ -72,6 +72,10 @@ namespace AppPomodoreMethod
             });
         }
 
+        private void ModificandoUI()
+        {
+            LblTimer.Content = Timer.ToString(00:00);
+        }
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
         {
