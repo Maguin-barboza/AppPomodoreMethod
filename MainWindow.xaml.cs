@@ -23,14 +23,15 @@ namespace AppPomodoreMethod
     public partial class MainWindow : Window
     {
 
-        private int Timer;
+        public Pomodore Pomo { get; set; } = new Pomodore();
         private CancellationTokenSource tokenstop;
         private bool IsPaused;
 
         public MainWindow()
         {
-            Timer = 25;
             InitializeComponent();
+            Pomo.Timer = 25;
+            this.DataContext = this;
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
@@ -40,7 +41,7 @@ namespace AppPomodoreMethod
             BtnStop.IsEnabled = true;
 
             ContagemTimer();
-            LblTimer.Content = Timer.ToString("00:00");
+            
         }
 
 
@@ -54,15 +55,15 @@ namespace AppPomodoreMethod
 
             await Task.Run(() =>
             {
-                for (int i = Timer; i > 0; i--)
+                for (int i = Pomo.Timer; i > 0; i--)
                 {
                     //Verificando se foi solicitado o cancelamento;
                     if (tokenstop.IsCancellationRequested)
                         break;
 
-                    Timer = i;
+                    Pomo.Timer = i;
 
-
+                    //ModificandoUI();
 
                     //Descobrir como eu posso enviar mensagens para a thread principal, atualizando a UI 
                     //conforme o processamento é realizado;
@@ -72,10 +73,14 @@ namespace AppPomodoreMethod
             });
         }
 
-        private void ModificandoUI()
+        /*private void ModificandoUI()
         {
-            LblTimer.Content = Timer.ToString("00:00");
-        }
+            lock(this)
+            {
+                LblTimer.Content = Timer.ToString("00:00");
+            }
+            
+        }*/
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
         {
@@ -84,7 +89,7 @@ namespace AppPomodoreMethod
 
             tokenstop.Cancel();
             IsPaused = true;
-            LblTimer.Content = Timer.ToString("00:00");
+            
 
             tokenstop.Dispose();
         }
@@ -99,8 +104,8 @@ namespace AppPomodoreMethod
             if(!IsPaused)
                 tokenstop.Cancel();
 
-            LblTimer.Content = Timer.ToString("00:00");
-            Timer = 25;
+
+            Pomo.Timer = 25;
 
             //Se não destruir o objeto para criá-lo novamente, IsCancellationRequested será sempre true;
             tokenstop.Dispose();
