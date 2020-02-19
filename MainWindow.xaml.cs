@@ -30,7 +30,7 @@ namespace AppPomodoreMethod
         public MainWindow()
         {
             InitializeComponent();
-            Pomo.Timer = 25;
+            Pomo.Timer = "25";
             this.DataContext = this;
         }
 
@@ -55,21 +55,25 @@ namespace AppPomodoreMethod
 
             await Task.Run(() =>
             {
-                for (int i = Pomo.Timer; i > 0; i--)
+                for (int minutes = 25; minutes > 0; minutes--)
                 {
-                    //Verificando se foi solicitado o cancelamento;
-                    if (tokenstop.IsCancellationRequested)
-                        break;
+                    for (int seconds = 59; seconds >= 0; seconds--)
+                    {
+                        //Verificando se foi solicitado o cancelamento;
+                        if (tokenstop.IsCancellationRequested)
+                            break;
 
-                    Pomo.Timer = i;
+                        Pomo.Timer = minutes.ToString("00") + ":" + seconds.ToString("00");
 
-                    //ModificandoUI();
+                        //ModificandoUI();
 
-                    //Descobrir como eu posso enviar mensagens para a thread principal, atualizando a UI 
-                    //conforme o processamento é realizado;
-                    //LblTimer.Content = i.ToString("00:00");
-                    Thread.Sleep(1000);
+                        //Descobrir como eu posso enviar mensagens para a thread principal, atualizando a UI 
+                        //conforme o processamento é realizado;
+                        //LblTimer.Content = i.ToString("00:00");
+                        Thread.Sleep(500);
+                    }
                 }
+                
             });
         }
 
@@ -105,7 +109,7 @@ namespace AppPomodoreMethod
                 tokenstop.Cancel();
 
 
-            Pomo.Timer = 25;
+            Pomo.Timer = "25";
 
             //Se não destruir o objeto para criá-lo novamente, IsCancellationRequested será sempre true;
             tokenstop.Dispose();

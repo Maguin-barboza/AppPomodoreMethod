@@ -4,9 +4,9 @@ namespace AppPomodoreMethod
 {
     public class Pomodore: INotifyPropertyChanged
     {
-        private int _timer;
+        private string _timer;
 
-        public int Timer
+        public string Timer
         {
             get
             {
