@@ -9,7 +9,7 @@
         ResizeMode="NoResize">
     <Canvas Margin="0,0,0,3">
 
-        <Label x:Name="LblTimer" FontSize="60" Content="{Binding Pomo.Timer, StringFormat={}{0:HH:mm}}" Height="89" Width="150" Canvas.Left="90" Canvas.Top="62" />
+        <Label x:Name="LblTimer" FontSize="60" Content="{Binding Control.Timer.Timer, StringFormat={}{0:HH:mm}}" Height="89" Width="150" Canvas.Left="90" Canvas.Top="62" />
 
         <!-- Botão Play-->
         <Button x:Name="BtnPlay" Canvas.Left="95" Canvas.Top="150" Height="38" Width="44" Click="BtnPlay_Click" >
