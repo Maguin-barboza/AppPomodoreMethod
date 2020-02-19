@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AppPomodoreMethod
+﻿namespace AppPomodoreMethod
 {
     public class ControlPomodore
     {
@@ -12,5 +8,7 @@ namespace AppPomodoreMethod
         {
 
         }
+
+
     }
 }
