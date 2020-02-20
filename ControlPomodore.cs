@@ -66,11 +66,10 @@ namespace AppPomodoreMethod
                         //Descobrir como eu posso enviar mensagens para a thread principal, atualizando a UI 
                         //conforme o processamento é realizado;
                         //LblTimer.Content = i.ToString("00:00");
-                        Thread.Sleep(50);
+                        Thread.Sleep(500);
                     }
+                    Seconds = 59;
                 }
-
-                Stop();
             });
         }
     }
