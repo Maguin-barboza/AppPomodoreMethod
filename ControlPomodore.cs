@@ -10,6 +10,7 @@ namespace AppPomodoreMethod
         private bool IsPaused;
         private string timerInicialMinutos;
 
+
         public Pomodore Timer { get; set; } = new Pomodore();
         private int Minutes { get; set; }
         private int Seconds { get; set; }
@@ -21,9 +22,6 @@ namespace AppPomodoreMethod
 
             Minutes = Convert.ToInt32(timer[0]);
             Seconds = Convert.ToInt32(timer[1]);
-
-
-            Timer.Timer = timerInicialMinutos;
         }
 
         public void Play()
@@ -57,8 +55,6 @@ namespace AppPomodoreMethod
             tokenstop = new CancellationTokenSource();
             IsPaused = false;
 
-            //if(Timer.Timer != )
-
             await Task.Run(() =>
             {
                 for (Minutes = Minutes; Minutes > 0; Minutes--)
@@ -76,7 +72,7 @@ namespace AppPomodoreMethod
                         //Descobrir como eu posso enviar mensagens para a thread principal, atualizando a UI 
                         //conforme o processamento é realizado;
                         //LblTimer.Content = i.ToString("00:00");
-                        Thread.Sleep(500);
+                        Thread.Sleep(50);
                     }
                     Seconds = 59;
                 }
