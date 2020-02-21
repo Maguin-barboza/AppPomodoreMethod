@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Threading;
+using System;
 
 namespace AppPomodoreMethod
 {
@@ -7,6 +8,7 @@ namespace AppPomodoreMethod
     {
         private CancellationTokenSource tokenstop;
         private bool IsPaused;
+        private string timerInicialMinutos;
 
         public Pomodore Timer { get; set; } = new Pomodore();
         private int Minutes { get; set; }
@@ -14,8 +16,14 @@ namespace AppPomodoreMethod
         
         public ControlPomodore()
         {
-            Minutes = 25;
-            Seconds = 0;
+            timerInicialMinutos = "25:00";
+            string[] timer = timerInicialMinutos.Split(":");
+
+            Minutes = Convert.ToInt32(timer[0]);
+            Seconds = Convert.ToInt32(timer[1]);
+
+
+            Timer.Timer = timerInicialMinutos;
         }
 
         public void Play()
@@ -48,6 +56,8 @@ namespace AppPomodoreMethod
             //Se não destruir o objeto para criá-lo novamente, IsCancellationRequested será sempre true;
             tokenstop = new CancellationTokenSource();
             IsPaused = false;
+
+            //if(Timer.Timer != )
 
             await Task.Run(() =>
             {
