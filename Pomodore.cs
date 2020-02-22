@@ -1,30 +1,32 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Diagnostics;
 
 namespace AppPomodoreMethod
 {
     public class Pomodore: INotifyPropertyChanged
     {
-        private string _timer;
+        private TimeSpan _Timer;
 
-        public string Timer
+        public TimeSpan Timer
         {
-            get
-            {
-                return _timer;
-            }
-            set
-            {
-                if(_timer != value)
+            get { return _Timer; }
+            set 
+            { 
+                if(_Timer != value)
                 {
-                    _timer = value;
-                    PropertyChangedHandler("Timer");
+                    _Timer = value;
+                    RaisePropertyChangedHandler("Timer");
                 }
             }
         }
 
+        public Pomodore()
+        {
+            _Timer = new TimeSpan();
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void PropertyChangedHandler(string prop)
+        private void RaisePropertyChangedHandler(string prop)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));

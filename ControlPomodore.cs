@@ -22,6 +22,8 @@ namespace AppPomodoreMethod
 
             Minutes = Convert.ToInt32(timer[0]);
             Seconds = Convert.ToInt32(timer[1]);
+
+
         }
 
         public void Play()
