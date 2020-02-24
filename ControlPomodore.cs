@@ -33,10 +33,10 @@ namespace AppPomodoreMethod
 
         private void IniciarContagem()
         {
-            while(Cronometro.Timer.Minutes > 0)
+            while(Cronometro.Timer != TimeSpan.Zero)
             {
                 Cronometro.Timer = Cronometro.Timer.Subtract(Segundos);
-                Thread.Sleep(500);
+                Thread.Sleep(1);
             }
         }
     }
