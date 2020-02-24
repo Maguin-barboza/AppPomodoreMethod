@@ -10,7 +10,6 @@ namespace AppPomodoreMethod
     public partial class MainWindow : Window
     {
 
-        //public Pomodore Pomo { get; set; } = new Pomodore();
         public ControlPomodore Control { get; set; } = new ControlPomodore();
 
         public MainWindow()
