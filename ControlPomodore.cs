@@ -36,7 +36,7 @@ namespace AppPomodoreMethod
             while(Cronometro.Timer != TimeSpan.Zero)
             {
                 Cronometro.Timer = Cronometro.Timer.Subtract(Segundos);
-                Thread.Sleep(1);
+                Thread.Sleep(500);
             }
         }
     }
