@@ -21,11 +21,13 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="1" >
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock FontSize="60" Text="{Binding Control.Cronometro.Timer.Minutes}" />
                 <TextBlock FontSize="60" Text=":" />
                 <TextBlock FontSize="60" Text="{Binding Control.Cronometro.Timer.Seconds}" />
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <!-- Botão Play-->
                 <Button x:Name="BtnPlay" Height="38" Width="44" Click="BtnPlay_Click" >
