@@ -7,27 +7,44 @@
         mc:Ignorable="d"
         Title="Pomodore Method" Height="301" Width="330" Icon="Icons\PomodoreIcon"
         ResizeMode="NoResize">
-    <Canvas Margin="0,0,0,3">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
 
-        <Label FontSize="60" Content="00:00" Height="89" Width="150" Canvas.Left="90" Canvas.Top="62" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
 
-        <!-- Botão Play-->
-        <Button x:Name="BtnPlay" Canvas.Left="95" Canvas.Top="150" Height="38" Width="44" Click="BtnPlay_Click" >
-            <Image Source="Icons\Play.png"></Image>
-        </Button>
+        <StackPanel Grid.Row="1" Grid.Column="1" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock FontSize="60" Text="{Binding Control.Cronometro.Timer.Minutes}" />
+                <TextBlock FontSize="60" Text=":" />
+                <TextBlock FontSize="60" Text="{Binding Control.Cronometro.Timer.Seconds}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <!-- Botão Play-->
+                <Button x:Name="BtnPlay" Height="38" Width="44" Click="BtnPlay_Click" >
+                    <Image Source="Icons\Play.png"></Image>
+                </Button>
 
-        <!-- Botão Pause-->
-        <Button x:Name="BtnPause" 
-                Canvas.Left="145" Canvas.Top="150" Height="38" Width="44" 
+                <!-- Botão Pause-->
+                <Button x:Name="BtnPause" Height="38" Width="44" 
                 IsEnabled="False" Click="BtnPause_Click" >
-            <Image Source="Icons\Pause.png"></Image>
-        </Button>
+                    <Image Source="Icons\Pause.png"></Image>
+                </Button>
 
-        <!-- Botão Stop-->
-        <Button x:Name="BtnStop" 
-                Canvas.Left="195" Canvas.Top="150" Height="38" Width="44" 
+                <!-- Botão Stop-->
+                <Button x:Name="BtnStop" Height="38" Width="44" 
                 IsEnabled="False" Click="BtnStop_Click" >
-            <Image Source="Icons\Stop.png"></Image>
-        </Button>
-    </Canvas>
+                    <Image Source="Icons\Stop.png"></Image>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
 </Window>
